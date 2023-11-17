@@ -1,0 +1,28 @@
+body {
+    background: bisque;
+    font-family: 'Roboto', sans-serif;
+}
+
+.frequency-slider {
+    align-items: center;
+}
+
+#toggle-play-button {
+    width: 150px;
+    height: 50px;
+    margin: 0.1rem;
+    padding: 1rem 2rem;
+    color: white;
+    font-weight: bold;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.playing {
+    background-color: red;
+    
+}
+
+.not-playing {
+    background-color: green;
+}

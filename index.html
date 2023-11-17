@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Audio Playground</title>
+
+    <!-- styles -->
+    <link rel="stylesheet" href="/src/styles/reset.css">
+    <link rel="stylesheet" href="/src/styles/main.css">
+
+
+    <!-- fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <h1>Audio Playground</h1>
+    </header>
+    <div class="container">
+        <div class="master-volume">
+            <span>Master Volume:</span>
+            <input type="range" id="master-volume-selector" min="0" max="100" value="20">
+            <span id="master-volume-value">20</span>
+        </div>
+        <div class="frequency-slider">
+            <span>Frequency:</span>
+            <input type="range" id="frequency-selector" min="20" max="10000" value="1000" step="1">
+            <span id="frequency-value">1000</span>
+        </div>
+        <div class="toggle-play">
+            <button id="toggle-play-button" class="not-playing">Start</button>
+        </div>
+    </div>
+    <script src="/src/scripts/main.js" defer></script>
+</body>
+</html>
