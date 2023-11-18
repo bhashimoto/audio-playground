@@ -27,8 +27,15 @@
         </div>
         <div class="frequency-slider">
             <span>Frequency:</span>
-            <input type="range" id="frequency-selector" min="20" max="10000" value="1000" step="1">
+            <input type="range" id="frequency-selector" min="20" max="3000" value="440" step="1">
             <span id="frequency-value">1000</span>
+        </div>
+        <div class="wave-shape-selector">
+            <span>Wave type:</span>
+            <input type="radio" class="wave-shape" name="wave" value="sine" checked>sine
+            <input type="radio" class="wave-shape" name="wave" value="square">square
+            <input type="radio" class="wave-shape" name="wave" value="triangle">triangle
+            <input type="radio" class="wave-shape" name="wave" value="sawtooth">sawtooth
         </div>
         <div class="toggle-play">
             <button id="toggle-play-button" class="not-playing">Start</button>

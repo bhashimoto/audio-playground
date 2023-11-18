@@ -10,13 +10,15 @@ const state = {
         masterVolume: {
             slider: document.querySelector("#master-volume-selector"),
             value: document.querySelector("#master-volume-value"),
-        }
+        },
+        waveShapes: document.querySelectorAll(".wave-shape[name='wave']"),
     },
     values: {
         frequency: 440,
         masterVolume: 0.2,
         playing: false,
         started: false,
+        waveShape: "sine",
     },
 }
 
@@ -25,6 +27,8 @@ const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
 
 // create Oscillator node
 const oscillator = audioCtx.createOscillator();
+oscillator.type = "square";
+
 // create master volume node
 const masterVolume = audioCtx.createGain();
 
@@ -32,13 +36,16 @@ oscillator.connect(masterVolume);
 
 
 function init() {
-
     createMasterVolumeHandler();
     createFrequencyHandler();
     createTogglePlayHandler();
+    createWaveShapeHandler();
 }
 
 init();
+
+
+// Function definitions
 
 function createFrequencyHandler(){
     state.views.frequency.slider.addEventListener("input", (e) => {
@@ -94,8 +101,20 @@ function createMasterVolumeHandler() {
     state.views.masterVolume.slider.addEventListener("input", (e) => {
         const newVolume = e.target.value / 100;
         state.values.masterVolume = newVolume;
-        state.views.masterVolume.value.innerText = newVolume * 100;
+        state.views.masterVolume.value.innerText = e.target.value;
 
         masterVolume.gain.setTargetAtTime(newVolume, audioCtx.currentTime, 0.01);
     })
+}
+
+function createWaveShapeHandler(){
+    state.views.waveShapes.forEach((shape) => {
+        shape.addEventListener("click", (e) => {
+            if(e.target.checked){
+                console.log(`Changing wave to ${e.target.value}`);
+                oscillator.type = e.target.value;
+                state.values.waveShape = e.target.value;
+            }
+        })
+    });
 }
